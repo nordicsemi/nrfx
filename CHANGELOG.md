@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project are documented in this file.
 
+## [4.3.3] - 2026-11-23
+
+### Fixed
+- Fixed incorrect SYSCOUNTER compare channel setting procedure in the GRTC driver.
+- Fixed incorrect RAM map for the nRF54LS05B SoC.
+
 ## [4.3.2] - 2026-10-02
 
 ### Changed

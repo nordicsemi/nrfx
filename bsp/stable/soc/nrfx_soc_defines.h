@@ -96,12 +96,6 @@ extern "C" {
         NRF_PIN_PORT_TO_PIN_NUMBER(10U, 1), \
         NRF_PIN_PORT_TO_PIN_NUMBER(11U, 1), \
         NRF_PIN_PORT_TO_PIN_NUMBER(12U, 1)
-#elif defined(NRF54LS05A_XXAA) || defined(NRF54LS05B_XXAA)
-    #define COMP_EXTERNAL_AIN_PSELS         \
-        NRF_PIN_PORT_TO_PIN_NUMBER(4U, 1),  \
-        NRF_PIN_PORT_TO_PIN_NUMBER(5U, 1),  \
-        NRF_PIN_PORT_TO_PIN_NUMBER(6U, 1),  \
-        NRF_PIN_PORT_TO_PIN_NUMBER(7U, 1)
 #elif defined(NRF7120_ENGA_XXAA)
     #define COMP_EXTERNAL_AIN_PSELS                     \
         NRF_PIN_PORT_TO_PIN_NUMBER(0U, 0),              \
@@ -177,12 +171,6 @@ extern "C" {
         NRF_PIN_PORT_TO_PIN_NUMBER(10U, 1), \
         NRF_PIN_PORT_TO_PIN_NUMBER(11U, 1), \
         NRF_PIN_PORT_TO_PIN_NUMBER(12U, 1),
-#elif defined(NRF54LS05A_XXAA) || defined(NRF54LS05B_XXAA)
-    #define COMP_EXTERNAL_REF_PSELS        \
-        NRF_PIN_PORT_TO_PIN_NUMBER(4U, 1), \
-        NRF_PIN_PORT_TO_PIN_NUMBER(5U, 1), \
-        NRF_PIN_PORT_TO_PIN_NUMBER(6U, 1), \
-        NRF_PIN_PORT_TO_PIN_NUMBER(7U, 1),
 #elif defined(NRF7120_ENGA_XXAA)
     #define COMP_EXTERNAL_REF_PSELS                      \
         NRF_PIN_PORT_TO_PIN_NUMBER(0U, 0),               \
@@ -258,12 +246,6 @@ extern "C" {
         NRF_PIN_PORT_TO_PIN_NUMBER(10U, 1), \
         NRF_PIN_PORT_TO_PIN_NUMBER(11U, 1), \
         NRF_PIN_PORT_TO_PIN_NUMBER(12U, 1),
-#elif defined(NRF54LS05A_XXAA) || defined(NRF54LS05B_XXAA)
-    #define LPCOMP_EXTERNAL_AIN_PSELS      \
-        NRF_PIN_PORT_TO_PIN_NUMBER(4U, 1), \
-        NRF_PIN_PORT_TO_PIN_NUMBER(5U, 1), \
-        NRF_PIN_PORT_TO_PIN_NUMBER(6U, 1), \
-        NRF_PIN_PORT_TO_PIN_NUMBER(7U, 1),
 #elif defined(NRF7120_ENGA_XXAA)
     #define LPCOMP_EXTERNAL_AIN_PSELS                      \
         NRF_PIN_PORT_TO_PIN_NUMBER(0U, 0),                 \
@@ -335,12 +317,6 @@ extern "C" {
         NRF_PIN_PORT_TO_PIN_NUMBER(10U, 1), \
         NRF_PIN_PORT_TO_PIN_NUMBER(11U, 1), \
         NRF_PIN_PORT_TO_PIN_NUMBER(12U, 1),
-#elif defined(NRF54LS05A_XXAA) || defined(NRF54LS05B_XXAA)
-    #define LPCOMP_EXTERNAL_REF_PSELS      \
-        NRF_PIN_PORT_TO_PIN_NUMBER(4U, 1), \
-        NRF_PIN_PORT_TO_PIN_NUMBER(5U, 1), \
-        NRF_PIN_PORT_TO_PIN_NUMBER(6U, 1), \
-        NRF_PIN_PORT_TO_PIN_NUMBER(7U, 1),
 #elif defined(NRF7120_ENGA_XXAA)
     #define LPCOMP_EXTERNAL_REF_PSELS                    \
         NRF_PIN_PORT_TO_PIN_NUMBER(0U, 0),               \
@@ -643,11 +619,16 @@ extern "C" {
 #define RAM_UNIFORM_BLOCKS             1
 #define RAM_UNIFORM_SECTIONS_PER_BLOCK 16
 #define RAM_UNIFORM_SECTIONS_TOTAL     16
-#elif defined(NRF54LS05A_XXAA) || defined(NRF54LS05B_XXAA)
+#elif defined(NRF54LS05A_XXAA)
 #define RAM_SECTION_UNIT_SIZE          (32UL * 1024UL)
 #define RAM_UNIFORM_BLOCKS             1
 #define RAM_UNIFORM_SECTIONS_PER_BLOCK 2
 #define RAM_UNIFORM_SECTIONS_TOTAL     2
+#elif defined(NRF54LS05B_XXAA)
+#define RAM_SECTION_UNIT_SIZE          (32UL * 1024UL)
+#define RAM_UNIFORM_BLOCKS             1
+#define RAM_UNIFORM_SECTIONS_PER_BLOCK 3
+#define RAM_UNIFORM_SECTIONS_TOTAL     3
 #elif defined(NRF54LC10A_XXAA) || defined(NRF54LV10A_XXAA)
 #define RAM_SECTION_UNIT_SIZE          (32UL * 1024UL)
 #define RAM_UNIFORM_BLOCKS             1

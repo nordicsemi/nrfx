@@ -701,17 +701,22 @@ void nrfx_grtc_syscounter_cc_abs_set(uint8_t channel, uint64_t val, bool safe_se
     m_cb.cc_value[m_cb.ch_to_data[channel]] = val;
     if (safe_setting)
     {
-        nrfy_grtc_sys_counter_cc_set(NRF_GRTC, channel, val);
-        if (nrfy_grtc_sys_counter_compare_event_check(NRF_GRTC, channel))
-        {
-            uint64_t now;
+        bool retry;
 
-            now = nrfx_grtc_syscounter_get();
-            if (val > now)
-            {
-                nrfy_grtc_sys_counter_compare_event_clear(NRF_GRTC, channel);
-            }
-        }
+        do
+        {
+            /* Rewriting CC with the same value is not redundant. Every clear must be
+             * paired with it, because the deadline can expire after the check below and
+             * before the clear performed at the beginning of the next iteration. The
+             * clear would then drop a legitimate event. Writing CCH re-arms the channel
+             * and regenerates the event for a CC that is already in the past.
+             */
+            nrfy_grtc_sys_counter_compare_event_clear(NRF_GRTC, channel);
+            nrfy_grtc_sys_counter_cc_set(NRF_GRTC, channel, val);
+
+            retry = nrfy_grtc_sys_counter_compare_event_check(NRF_GRTC, channel) &&
+                    (val > nrfx_grtc_syscounter_get());
+        } while (retry);
     }
     else
     {
